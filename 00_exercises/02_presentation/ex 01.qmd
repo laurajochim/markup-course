@@ -1,0 +1,31 @@
+---
+title: "Presentation"
+format: revealjs
+author: 
+  - name: Laura Jochim
+    orcid: 0009-0001-4577-4152
+---
+
+
+## My favorite equation
+\
+My favorite equation is the one of the normal distribution:\
+
+$$
+ f(x) = \frac{1}{\sigma\sqrt{2\pi}} 
+  \exp\left( -\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{\!2}\,\right)
+$$
+
+
+
+## Information you wouldn't know about me
+\
+Some things you might, or might not know about me
+
+-   I speak Russian
+-   I work behind the bar of a club
+-   My original hair color is not blonde
+-   My favorite drink is tea:)
+
+
+
