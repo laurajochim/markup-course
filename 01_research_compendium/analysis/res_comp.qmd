@@ -6,20 +6,16 @@ format: pdf
 bibliography: references.bib
 ---
 
-This document aims to reproduce the simulation study 'Introduction to statistical simulations in health research' by [@boulesteixIntroductionStatisticalSimulations2020].
+This document aims to reproduce the simulation study conducted in the paper 'Introduction to statistical simulations in health research' [@boulesteixIntroductionStatisticalSimulations2020].
 
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 #load packages
 #| echo: false
 #| output: false
-suppressMessages({
-  suppressWarnings({
     library(Hmisc)
     library(mice)
     library(tidyverse)
-  })
-})
 ```
 
 ## Data prep
