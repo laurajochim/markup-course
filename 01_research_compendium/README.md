@@ -7,7 +7,8 @@ Deliverable 1: Reproducible research compendium.
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of res_comp is to reproduce the simulation study of Boulesteix, Groenwold, Abrahamowicz, et al. (2020). 
+The goal of the res_comp manuscript is to reproduce the simulation study of Boulesteix, Groenwold, Abrahamowicz, et al. (2020). This simulation study was conducted to investigate the effect of measurement error on exposure and confounding variables.
 
-name: Laura Jochim\\
-date: 21.01.2025
+The compendium is structured in such a way, that the data used can be found in the 'data' folder. The manuscript along with a rendered pdf, the references, and the resulting graph can be found in the folder 'analysis'. A License is also included. 
+
+author: Laura Jochim
