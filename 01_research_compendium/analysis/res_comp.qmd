@@ -13,23 +13,27 @@ This document aims to reproduce the simulation study 'Introduction to statistica
 #load packages
 #| echo: false
 #| output: false
-library(Hmisc)
-library(mice)
-library(tidyverse)
+suppressMessages({
+  suppressWarnings({
+    library(Hmisc)
+    library(mice)
+    library(tidyverse)
+  })
+})
 ```
 
 ## Data prep
 
-The different data sets are being loaded: 
+The five data sets are being loaded using the following code: 
 
 ```{r}
 #| echo: true
 #| output: false
-d1 <- sasxport.get("DEMO_I.xpt")
-d2 <- sasxport.get("BPX_I.xpt")
-d3 <- sasxport.get("BMX_I.xpt")
-d4 <- sasxport.get("GHB_I.xpt")
-d5 <- sasxport.get("TCHOL_I.xpt")
+d1 <- sasxport.get("../data/DEMO_I.xpt")
+d2 <- sasxport.get("../data/BPX_I.xpt")
+d3 <- sasxport.get("../data/BMX_I.xpt")
+d4 <- sasxport.get("../data/GHB_I.xpt")
+d5 <- sasxport.get("../data/TCHOL_I.xpt")
 d1.t <- subset(d1,select=c("seqn","riagendr","ridageyr"))
 d2.t <- subset(d2,select=c("seqn","bpxsy1"))
 d3.t <- subset(d3,select=c("seqn","bmxbmi"))
@@ -47,7 +51,7 @@ d <- merge(d,d5.t)
 ```
 
 
-New variables are added to the dataset representing the same variables but a more easily comprehensive names:
+Renaming the variables to be more comprehensive:
 
 ```{r}
 #| echo: true
