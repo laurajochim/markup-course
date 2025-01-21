@@ -1,16 +1,17 @@
 ---
-title: "simulation study"
+title: "Simulation study"
 author: "Laura Jochim"
-format: html
+date: today
+format: pdf
 bibliography: references.bib
 ---
 
-This document aims to reproduce the simulation study 'Introduction to statistical simulations in health research' by [Boulesteix, Groenwold, Abrahamowicz, et al. (2020)](https://bmjopen.bmj.com/content/10/12/e039921 "Boulesteix, Groenwold, Abrahamowicz, et al. (2020)") is now.
+This document aims to reproduce the simulation study 'Introduction to statistical simulations in health research' by [@boulesteixIntroductionStatisticalSimulations2020].
 
 
 ```{r}
 #load packages
-#| echo: true
+#| echo: false
 #| output: false
 library(Hmisc)
 library(mice)
@@ -19,7 +20,7 @@ library(tidyverse)
 
 ## Data prep
 
-the different data sets are being loaded: 
+The different data sets are being loaded: 
 
 ```{r}
 #| echo: true
@@ -191,7 +192,7 @@ for (k in 1:n.sim){
 
 The result of the simulation is visualized using a heatmap showing how the impact of Glycohemoglobin on systolic blood pressure varies according to different levels of residual variance for both the exposure *HbA1C* and confounder *BMI*. The data is stored in the tot.mat matrix and plotted using the ggplot2 package:
 ```{r}
-#| echo: true
+#| echo: false
 #| output: false
 tot.mat <- cbind(100*scenarios,apply(beta.hat,2,mean))
 colnames(tot.mat) <- c("me.exp","me.conf","estimate")
@@ -199,7 +200,7 @@ colnames(tot.mat) <- c("me.exp","me.conf","estimate")
 
 
 ```{r}
-#| echo: true
+#| echo: false
 #| output: false
 
 FIGURE <- ggplot(tot.mat, aes(me.exp, me.conf)) +
@@ -230,4 +231,4 @@ ggsave("heatmap.png", FIGURE)
 
 ```
 
-![Heatmap](heatmap.png)
+![](heatmap.png)
