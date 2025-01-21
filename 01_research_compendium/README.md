@@ -9,5 +9,5 @@ Deliverable 1: Reproducible research compendium.
 
 The goal of res_comp is to reproduce the simulation study of Boulesteix, Groenwold, Abrahamowicz, et al. (2020). 
 
-name: Laura Jochim
+name: Laura Jochim\\
 date: 21.01.2025
