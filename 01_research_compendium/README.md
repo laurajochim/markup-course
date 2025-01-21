@@ -2,4 +2,12 @@
 
 Deliverable 1: Reproducible research compendium.
 
-Place the full contents of your research compendium in this directory. See course manual for requirements.
+# res_comp manuscript
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of res_comp is to reproduce the simulation study of Boulesteix, Groenwold, Abrahamowicz, et al. (2020). 
+
+name: Laura Jochim
+date: 21.01.2025
