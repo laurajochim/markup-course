@@ -223,6 +223,8 @@ FIGURE
 
 ```
 
+![](heatmap.png)
+
 The figure matches the figure obtained by Boulesteix, Groenwold, Abrahamowicz, et al. (2020).
 ```{r}
 #| echo: false
@@ -230,5 +232,7 @@ The figure matches the figure obtained by Boulesteix, Groenwold, Abrahamowicz, e
 ggsave("heatmap.png", FIGURE)
 
 ```
+::: {pagebreak}
+:::
 
-![](heatmap.png)
+## References
