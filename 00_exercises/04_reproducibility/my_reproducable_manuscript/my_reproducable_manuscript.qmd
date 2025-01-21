@@ -1,26 +1,59 @@
 ---
 title: "My reproducable manuscript"
-format: html
+format: pdf
 author: Laura Jochim
+bibliography: Exported Items.bib
+echo: False
 ---
 
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
 ```{r}
-1 + 1
+# Load penguins
+library(ggplot2)
+
+# Read data
+penguins <- read.csv("data/data.csv")
+
 ```
 
-You can add options to executable code like this 
-
 ```{r}
-#| echo: false
-2 * 2
+#| file: "scripts/do_addition.R"
+#| eval: TRUE
+ source("scripts/do_addition.R")
+
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+```{r}
+result <- do_addition(124, 152)
+```
+
+## Meet Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. 
+To learn more about Quarto see <https://quarto.org>.
+
+## Meet Penguins
+The `penguins` data from the [palmerpenguins](https://allisonhorst.github.io/palmerpenguins/) [@PalmerpenguinsDataPackage] package contains size measurements for `r nrow(penguins)` penguins from three species observed on three islands in the Palmer Archipelago, Antarctica.
+According to @Penguin2025, Penguins are a group of aquatic flightless birds.  
+
+The plot below shows the relationship between flipper and bill lengths of these penguins.
+There are `r sum(penguins$Species=='Gentoo penguin (Pygoscelis papua)')` penguins of the Gentoo species, `r sum(penguins$Species=='Chinstrap penguin (Pygoscelis antarctica)')` of the Chinstrap species, and `r sum(penguins$Species=='Adelie Penguin (Pygoscelis adeliae)')` of the Adelie species in the dataset. Together, Gentoo and Adelie make up most of the data set, namely `r result`. 
+
+![](https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png)
+
+## Results
+
+```{r, warning=FALSE}
+# Plot penguins
+ggplot(penguins, 
+       aes(x = `Flipper.Length..mm.`, y = `Culmen.Length..mm.`)) +
+        geom_point(aes(color = Species, shape = Species)) +
+        scale_color_manual(values = c("darkorange","purple","cyan4")) +
+        labs(
+                title = "Flipper and Culmen length",
+                subtitle = "Dimensions for penguins at Palmer Station LTER",
+                x = "Flipper length (mm)", y = "Culmen length (mm)",
+                color = "Penguin species", shape = "Penguin species"
+        ) +
+        theme_minimal()
+```
+
