@@ -1,0 +1,73 @@
+---
+title: "Penguins"
+format: revealjs
+author: 
+  - name: Laura Jochim
+    orcid: 0009-0001-4577-4152
+---
+```{r}
+#| label: load_packages
+#| message: false
+#| include: false
+
+install.packages("DT")
+library(DT)
+install.packages("palmerpenguins")
+library(palmerpenguins)
+data(package = 'palmerpenguins')
+head(penguins)
+```
+
+## PalmerPenguins
+
+PalmerPenguins aims to provide a dataset similar to `iris` for data exploration and visualization purposes. I will be using the `penguin` data set to find out more about penguins:) 
+![Penguins Logo](https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png){.center}
+
+
+## Dataset
+
+There are `r sum(penguins$species=='Gentoo')` penguins of the Gentoo species, `r sum(penguins$species=='Chinstrap')` of the Chinstrap species, and `r sum(penguins$species=='Adelie')` of the Adelie species in the dataset. So the total sample size of the `penguin` data is `r length(penguins$species)`. Below is a table to get a feeling of the data.
+
+```{r}
+
+
+datatable(penguins, 
+          options = list(
+            autoWidth = TRUE,
+            pageLength = 10,
+            initComplete = JS(
+              "function(settings, json) {",
+              "$(this.api().table().header()).css({'background-color': '#000', 'color': '#fff'});",
+              "$(this.api().table().container()).css({'font-size': '0.5em'});", # Adjust font size
+              "}")
+)
+)
+```
+
+
+## Gentoo & Chinstrap
+
+Here is a video to see how different the Gentoo and CHinstrap penguins look like in real life:
+
+<center>
+
+{{< video https://www.youtube.com/watch?v=lM02wDTiX34 width="700" height="480" >}}
+
+</center>
+
+## Reproducible Environment
+
+- Use renv() to make an reproducible environment for this presentation
+```{r, echo=TRUE}
+#| message: false
+
+
+renv::init()
+```
+
+```{r, echo=TRUE}
+#| message: false
+
+renv::snapshot()
+
+```
