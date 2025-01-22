@@ -4,6 +4,8 @@ format: revealjs
 author: 
   - name: Laura Jochim
     orcid: 0009-0001-4577-4152
+logo: "logo.png"
+bibliography: references.bib
 ---
 ```{r}
 #| label: load_packages
@@ -12,6 +14,10 @@ author:
 
 install.packages("DT")
 library(DT)
+install.packages("tidyverse")
+library(tidyverse)
+install.packages("ggplot2")
+library(ggplot2)
 install.packages("palmerpenguins")
 library(palmerpenguins)
 data(package = 'palmerpenguins')
@@ -20,7 +26,7 @@ head(penguins)
 
 ## PalmerPenguins
 
-PalmerPenguins aims to provide a dataset similar to `iris` for data exploration and visualization purposes. I will be using the `penguin` data set to find out more about penguins:) 
+PalmerPenguins [@PalmerpenguinsDataPackage] aims to provide a dataset similar to `iris` for data exploration and visualization purposes. I will be using the `penguin` data set to find out more about penguins:) 
 ![Penguins Logo](https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png){.center}
 
 
@@ -43,11 +49,52 @@ datatable(penguins,
 )
 )
 ```
+## Bill length 
+
+::: columns
+::: {.column width="50%"}
+Below a table with the mean bill length of each species is seen. The mean is calculated using the following formula: 
+$$
+Mean Bill Length = \frac{\sum x_i}{n}
+$$
+
+:::
+
+::: {.column width="50%"}
+```{r}
+library(gt)
+penguins_summary <- palmerpenguins::penguins %>%
+  dplyr::group_by(species) %>%
+  dplyr::summarise(mean_bill_length = mean(bill_length_mm, na.rm = TRUE))
+gt(penguins_summary)
+
+```
+
+:::
+:::
+
+## Size & FLipper length
+
+```{r}
+# Scatterplot of Penguins
+
+
+ggplot(data = penguins, aes(x = body_mass_g, y = flipper_length_mm, color = species)) +
+  geom_point(size = 3, alpha = 0.8) +
+  labs(
+    title = "Body Mass vs. Flipper Length",
+    x = "Body Mass (g)",
+    y = "Flipper Length (mm)",
+    color = "Species"
+  ) +
+  theme_minimal()
+
+```
 
 
 ## Gentoo & Chinstrap
 
-Here is a video to see how different the Gentoo and CHinstrap penguins look like in real life:
+Here is a video to see how different the Gentoo and Chinstrap penguins look like in real life:
 
 <center>
 
@@ -71,3 +118,5 @@ renv::init()
 renv::snapshot()
 
 ```
+
+## References
